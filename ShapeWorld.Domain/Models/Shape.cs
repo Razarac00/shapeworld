@@ -8,7 +8,7 @@ namespace ShapeWorld.Domain.Models
 
         // properties - a field masquerading as a method
         public int NumberOfEdges {get;} // could add private set; to allow shape to shapeshift lol
-        public Shape BaseShape { get; private set; }
+
 
         // methods
         public virtual double Perimeter() // if specified in subclass, take that, else return this.
@@ -29,11 +29,5 @@ namespace ShapeWorld.Domain.Models
             NumberOfEdges = edges;
         }
 
-        public Shape(int edges, Shape shape2D)
-        {
-            NumberOfEdges = edges;
-            BaseShape = shape2D;
-
-        }
     }
 }

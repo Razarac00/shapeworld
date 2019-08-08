@@ -26,10 +26,8 @@ namespace ShapeWorld.Domain.Models
             
         }
 
-        public Triangle(double bottom, double height) : base(3)
+        public Triangle() : base(3)
         {
-            Bottom = bottom;
-            Height = height;
         }
     }
 }

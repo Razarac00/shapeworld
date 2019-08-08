@@ -16,7 +16,7 @@ namespace ShapeWorld.Domain.Models
             return 2 * Math.PI * Radius;
         }
 
-        public Circle() : base(1)
+        public Circle() : base(int.MaxValue)
         {
 
         }
