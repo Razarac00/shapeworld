@@ -29,5 +29,10 @@ namespace ShapeWorld.Domain.Models
             NumberOfEdges = edges;
         }
 
+        public override string ToString() // string interpolation -- evaluate the string at runtime to give objects their stuff 
+        {
+            return $"{this.GetType().Name}: {NumberOfEdges} edges";
+        }
+
     }
 }

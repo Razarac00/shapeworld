@@ -77,7 +77,29 @@ namespace ShapeWorld.Domain.Collections
             System.Console.WriteLine(shaped2.FirstOrDefault(e => e.NumberOfEdges == 4));
 
             // WRITE
-            //shaped2[100] = new Rectangle(); // it's dynamic so it can jump, unlike arrays--but only if the default empty value is defined. So it works with int, but not objects
+            try
+            {
+                shaped2[100] = new Rectangle(); // it's dynamic so it can jump, unlike arrays--but only if the default empty value is defined. So it works with int, but not objects    
+                
+            }
+            catch(NullReferenceException)
+            {
+                throw;
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                shaped2.Add(new Rectangle()); 
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("F in the chat", ex);
+            }
+            finally
+            {
+                GC.Collect(); // as long as the system doesn't get corrupted, clean up the garbage
+                System.Console.WriteLine("Final round");
+            }
+            
             shaped2.Add(new Triangle());
             shaped2.AddRange(shaped2);
 
@@ -99,7 +121,15 @@ namespace ShapeWorld.Domain.Collections
 
             // WRITE
             shaped2["square"] = new List<Shape>(); // will add it or will update if it exists--try to avoid this as it may not be clear to others
-            //shaped2.Add("square", new List<Shape>()); // only for adding--if square already exists, throw error
+            try
+            {
+                shaped2.Add("square", new List<Shape>()); // only for adding--if square already exists, throw error
+            }
+            catch (Exception)
+            {
+                shaped2["square"] = new List<Shape>();
+            }
+            
         }
     }
 }
