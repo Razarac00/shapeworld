@@ -13,6 +13,9 @@ namespace ShapeWorld.Client
             // Console.WriteLine("Hello World!");
             // If no 'using System', then System.Console.WriteLine("Hello World!");
             PlayWithCollection();
+
+            System.Console.WriteLine("\n /// WEEK 2 /// \n");
+            PlayWithGeneric();
         }
 
         private static void PlayWithShape()
@@ -45,6 +48,20 @@ namespace ShapeWorld.Client
             sa.DimensionalArray();
             sa.MyList();
             sa.MyDictionary();
+        }
+
+        private static void PlayWithGeneric() 
+        {
+            var gs = new GenericShape<Cube>();
+            gs.SayHello(new Cube());
+            gs.SayHello(new Triangle());
+
+            var gs2 = new GenericShape<Cube>();
+            gs2.SayHello(new Square()); // placeholder loses since Shape is already there. Can't overload with a clone
+
+            var gs3 = new GenericShape<Sphere>();
+            gs3.SayHello(new Square()); // rectangle is a closer parent than shape --> run rectangle method
+            gs3.SayHello(new Triangle());
         }
         
     }
